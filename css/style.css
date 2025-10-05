@@ -503,4 +503,10 @@ p {
 .footer-wrapper .copyright-section a {
     color: var(--text-white);
     font-weight: 600;
+    text-decoration: none;
+}
+
+/* Optional: Hover-Effekt */
+.footer-wrapper .copyright-section a:hover {
+    color: var(--secondary-color);
 }
