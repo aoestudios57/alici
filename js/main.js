@@ -1,21 +1,30 @@
-// Header scroll
+document.addEventListener("DOMContentLoaded", function () {
+  const nav = document.querySelector(".navbar");
+  const scrollThreshold = 50;
 
-let nav = document.querySelector(".navbar");
-window.onscroll = function() {
-  if (document.documentElement.scrollTop > 100) {
-    nav.classList.add("header-scrolled");
-  } else {
-    nav.classList.remove("header-scrolled");
+  // Scroll-Effekt für die Navbar
+  if (nav) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > scrollThreshold) {
+        nav.classList.add("header-scrolled");
+      } else {
+        nav.classList.remove("header-scrolled");
+      }
+    });
   }
-};
 
-// Navbar hide
-
-let navLinks = document.querySelectorAll('.nav-link');
-let navCollapse = document.querySelector('.navbar-collapse.collapse');
-
-navLinks.forEach(function(link) {
-  link.addEventListener("click", function() {
-    navCollapse.classList.remove("show");
-  });
+  // Schließt das mobile Menü nach Klick auf einen Link
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navCollapse = document.querySelector('.navbar-collapse');
+  
+  if (navLinks && navCollapse) {
+      navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+              if (navCollapse.classList.contains('show')) {
+                 
+                  new bootstrap.Collapse(navCollapse).hide();
+              }
+          });
+      });
+  }
 });
